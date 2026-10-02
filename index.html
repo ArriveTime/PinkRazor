@@ -1,866 +1,2439 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PinkRazor | Sharp Insights for Bold Women in Tech & VC</title>
-  <style>
-    :root {
-      --bg: #0b0f19;
-      --card-bg: #0f172a;
-      --card-inner: #1e293b;
-      --magenta: #e0115f;
-      --magenta-glow: rgba(224, 17, 95, 0.4);
-      --coral: #ff6b81;
-      --navy: #0f172a;
-      --border: rgba(255, 255, 255, 0.08);
-      --border-bright: rgba(224, 17, 95, 0.3);
-      --text: #f8fafc;
-      --text-muted: #94a3b8;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    }
-
-    body {
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.5;
-      overflow-x: hidden;
-      background-image: 
-        radial-gradient(circle at 10% 10%, rgba(224, 17, 95, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 90% 90%, rgba(255, 107, 129, 0.05) 0%, transparent 40%);
-    }
-
-    /* Top Ticker */
-    .ticker-wrap {
-      background: #000;
-      border-bottom: 1px solid var(--border);
-      padding: 0.4rem 0;
-      overflow: hidden;
-      font-size: 0.75rem;
-      font-family: monospace;
-      color: var(--coral);
-      letter-spacing: 0.05em;
-      white-space: nowrap;
-    }
-
-    .ticker-content {
-      display: inline-block;
-      animation: ticker 35s linear infinite;
-    }
-
-    @keyframes ticker {
-      0% { transform: translate3d(0, 0, 0); }
-      100% { transform: translate3d(-50%, 0, 0); }
-    }
-
-    /* Header & Nav */
-    header {
-      background: rgba(15, 23, 42, 0.9);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      padding: 1.25rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo-container {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      text-decoration: none;
-    }
-
-    .logo-icon {
-      width: 34px;
-      height: 34px;
-      background: var(--magenta);
-      clip-path: polygon(0 0, 100% 0, 80% 100%, 0% 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 15px var(--magenta-glow);
-    }
-
-    .logo-text {
-      font-size: 1.6rem;
-      font-weight: 900;
-      letter-spacing: -0.04em;
-      color: #fff;
-      text-transform: uppercase;
-      font-style: italic;
-    }
-
-    .logo-text span {
-      color: var(--magenta);
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 1.75rem;
-    }
-
-    .nav-link {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      transition: color 0.2s ease;
-    }
-
-    .nav-link:hover, .nav-link.active {
-      color: var(--coral);
-    }
-
-    .btn-magenta {
-      background: var(--magenta);
-      color: #fff;
-      font-weight: 700;
-      padding: 0.6rem 1.25rem;
-      border-radius: 4px;
-      border: none;
-      cursor: pointer;
-      font-size: 0.82rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      box-shadow: 0 0 15px var(--magenta-glow);
-      transition: all 0.2s ease;
-      clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%);
-    }
-
-    .btn-magenta:hover {
-      background: #ff1a6c;
-      transform: translateY(-1px);
-      box-shadow: 0 0 22px rgba(224, 17, 95, 0.7);
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--border-bright);
-      padding: 0.6rem 1.25rem;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 0.82rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      transition: all 0.2s ease;
-    }
-
-    .btn-outline:hover {
-      border-color: var(--magenta);
-      color: var(--coral);
-    }
-
-    /* Main Container */
-    main {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 2.5rem 1.5rem;
-    }
-
-    /* Hero Editorial Section */
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 1.75rem;
-      margin-bottom: 3.5rem;
-    }
-
-    .hero-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 2.5rem;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      min-height: 440px;
-      background-image: linear-gradient(180deg, rgba(15,23,42,0.2) 0%, rgba(15,23,42,0.95) 100%), url('https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=1200&q=80');
-      background-size: cover;
-      background-position: center;
-    }
-
-    .hero-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, var(--magenta), var(--coral));
-    }
-
-    .tag {
-      display: inline-block;
-      background: var(--magenta);
-      color: #fff;
-      font-size: 0.7rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      padding: 0.25rem 0.6rem;
-      letter-spacing: 0.1em;
-      margin-bottom: 0.85rem;
-      width: fit-content;
-    }
-
-    .hero-title {
-      font-size: 2.25rem;
-      font-weight: 900;
-      line-height: 1.15;
-      margin-bottom: 0.85rem;
-      color: #fff;
-    }
-
-    .hero-excerpt {
-      color: #cbd5e1;
-      font-size: 1rem;
-      margin-bottom: 1.25rem;
-      max-width: 90%;
-    }
-
-    .meta {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      font-family: monospace;
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-    }
-
-    /* Side Callout Panel */
-    .side-panel {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-    }
-
-    .panel-box {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.5rem;
-      flex: 1;
-    }
-
-    .panel-box.highlight {
-      border-color: var(--border-bright);
-      background: linear-gradient(145deg, rgba(15,23,42,1), rgba(30,41,59,0.8));
-    }
-
-    .panel-header {
-      font-size: 0.82rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--coral);
-      margin-bottom: 0.75rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .panel-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      color: #fff;
-    }
-
-    .panel-desc {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-bottom: 1rem;
-    }
-
-    /* Controls Bar */
-    .controls-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 2rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid var(--border);
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .category-filters {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
-
-    .filter-btn {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      padding: 0.45rem 0.95rem;
-      border-radius: 20px;
-      font-size: 0.78rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .filter-btn:hover, .filter-btn.active {
-      background: var(--magenta);
-      color: #fff;
-      border-color: var(--magenta);
-    }
-
-    .search-box input {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      color: #fff;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      font-size: 0.82rem;
-      outline: none;
-      width: 220px;
-      transition: border-color 0.2s ease;
-    }
-
-    .search-box input:focus {
-      border-color: var(--magenta);
-    }
-
-    /* Grid Layout for Articles */
-    .articles-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 1.75rem;
-      margin-bottom: 4rem;
-    }
-
-    .article-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: all 0.25 ease;
-      cursor: pointer;
-    }
-
-    .article-card:hover {
-      border-color: var(--border-bright);
-      transform: translateY(-3px);
-    }
-
-    .article-img {
-      height: 190px;
-      background-size: cover;
-      background-position: center;
-      position: relative;
-    }
-
-    .article-body {
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
-
-    .article-title {
-      font-size: 1.15rem;
-      font-weight: 800;
-      line-height: 1.35;
-      margin-bottom: 0.65rem;
-      color: #fff;
-    }
-
-    .article-excerpt {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-bottom: 1.25rem;
-      flex: 1;
-    }
-
-    /* Featured Summit Banner */
-    .summit-banner {
-      background: linear-gradient(135deg, #1e112a 0%, #0f172a 100%);
-      border: 1px solid var(--magenta);
-      border-radius: 12px;
-      padding: 3rem 2rem;
-      text-align: center;
-      margin-bottom: 4rem;
-      position: relative;
-      box-shadow: 0 0 30px rgba(224, 17, 95, 0.15);
-    }
-
-    .summit-banner h2 {
-      font-size: 2rem;
-      font-weight: 900;
-      margin-bottom: 0.75rem;
-      background: linear-gradient(90deg, #fff, var(--coral));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .summit-banner p {
-      color: var(--text-muted);
-      max-width: 650px;
-      margin: 0 auto 1.5rem auto;
-      font-size: 0.95rem;
-    }
-
-    /* Modals */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(3, 7, 18, 0.88);
-      backdrop-filter: blur(8px);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 200;
-      padding: 1.5rem;
-    }
-
-    .modal-overlay.active {
-      display: flex;
-    }
-
-    .modal {
-      background: var(--navy);
-      border: 1px solid var(--border-bright);
-      border-radius: 12px;
-      max-width: 650px;
-      width: 100%;
-      padding: 2.25rem;
-      position: relative;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.8);
-      max-height: 90vh;
-      overflow-y: auto;
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 1.25rem; right: 1.25rem;
-      background: none; border: none;
-      color: var(--text-muted);
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-
-    .modal-close:hover { color: #fff; }
-
-    .form-group {
-      margin-bottom: 1.25rem;
-    }
-
-    .form-group label {
-      display: block;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--coral);
-      margin-bottom: 0.4rem;
-      font-weight: 700;
-    }
-
-    .form-group input, .form-group select {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      color: #fff;
-      outline: none;
-    }
-
-    .form-group input:focus {
-      border-color: var(--magenta);
-    }
-
-    /* Footer */
-    footer {
-      background: #050811;
-      border-top: 1px solid var(--border);
-      padding: 3rem 2rem 1.5rem 2rem;
-      font-size: 0.82rem;
-      color: var(--text-muted);
-    }
-
-    .footer-grid {
-      max-width: 1280px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 2fr repeat(3, 1fr);
-      gap: 2.5rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .footer-col h4 {
-      color: #fff;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 1rem;
-    }
-
-    .footer-col ul {
-      list-style: none;
-    }
-
-    .footer-col li {
-      margin-bottom: 0.5rem;
-    }
-
-    .footer-col a {
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-
-    .footer-col a:hover { color: var(--coral); }
-
-    .footer-bottom {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    @media (max-width: 868px) {
-      .hero-grid { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PinkRazor.com | Sharp Tools. Real Opportunities. Bold Women.</title>
+
+<meta name="description" content="PinkRazor.com is a free business resource hub for women entrepreneurs, founders and leaders. Find funding resources, grants, certification, government contracting, AI tools, business calculators, startup guidance and current business resources.">
+
+<meta name="keywords" content="women entrepreneurs, female entrepreneurs, women owned business, women business owners, business grants, startup funding, WOSB certification, women in business, venture capital, AI business tools, small business resources">
+
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#0b0f19">
+
+<meta property="og:title" content="PinkRazor.com | Sharp Tools. Real Opportunities. Bold Women.">
+<meta property="og:description" content="Free tools, funding resources, business intelligence and opportunities for women entrepreneurs.">
+<meta property="og:type" content="website">
+
+<style>
+:root{
+  --bg:#090d17;
+  --bg2:#0d1320;
+  --card:#101827;
+  --card2:#172235;
+  --pink:#e0115f;
+  --pink2:#ff397d;
+  --coral:#ff7187;
+  --purple:#9d4edd;
+  --gold:#ffd166;
+  --green:#32d583;
+  --blue:#42a5ff;
+  --white:#f8fafc;
+  --muted:#9ba8ba;
+  --border:rgba(255,255,255,.09);
+  --borderPink:rgba(224,17,95,.42);
+  --shadow:0 20px 50px rgba(0,0,0,.28);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 10% 5%,rgba(224,17,95,.10),transparent 32%),
+    radial-gradient(circle at 90% 70%,rgba(157,78,221,.07),transparent 35%),
+    var(--bg);
+  color:var(--white);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  line-height:1.5;
+}
+
+a{
+  color:inherit;
+}
+
+button,
+input,
+select{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+/* TOP STATUS */
+
+.livebar{
+  background:#05070c;
+  border-bottom:1px solid var(--border);
+  padding:8px 20px;
+}
+
+.livebar-inner{
+  max-width:1280px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  flex-wrap:wrap;
+  font-size:12px;
+  color:var(--muted);
+}
+
+.live-indicator{
+  color:var(--green);
+  font-weight:800;
+}
+
+.live-indicator:before{
+  content:"";
+  width:7px;
+  height:7px;
+  display:inline-block;
+  border-radius:50%;
+  background:var(--green);
+  margin-right:7px;
+  box-shadow:0 0 9px var(--green);
+}
+
+#currentDate{
+  color:var(--coral);
+  font-family:monospace;
+}
+
+/* HEADER */
+
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(9,13,23,.95);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+
+.nav{
+  max-width:1280px;
+  min-height:72px;
+  margin:auto;
+  padding:10px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  text-decoration:none;
+}
+
+.logo-blade{
+  width:36px;
+  height:36px;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(135deg,var(--pink),var(--pink2));
+  clip-path:polygon(0 0,100% 0,78% 100%,0 100%);
+  box-shadow:0 0 18px rgba(224,17,95,.4);
+  font-weight:900;
+}
+
+.logo-text{
+  font-size:27px;
+  font-weight:950;
+  letter-spacing:-1.4px;
+  font-style:italic;
+}
+
+.logo-text span{
+  color:var(--pink);
+}
+
+.navlinks{
+  display:flex;
+  gap:20px;
+  align-items:center;
+}
+
+.navlinks a{
+  color:var(--muted);
+  text-decoration:none;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  font-size:12px;
+  font-weight:800;
+}
+
+.navlinks a:hover{
+  color:var(--coral);
+}
+
+.header-button{
+  text-decoration:none;
+  padding:10px 15px;
+  border-radius:5px;
+  background:var(--pink);
+  color:white;
+  font-size:12px;
+  font-weight:900;
+  text-transform:uppercase;
+  box-shadow:0 0 15px rgba(224,17,95,.3);
+}
+
+/* HERO */
+
+.hero{
+  position:relative;
+  min-height:650px;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  border-bottom:1px solid var(--border);
+  background:
+    linear-gradient(90deg,rgba(7,10,17,.98) 0%,rgba(7,10,17,.89) 48%,rgba(7,10,17,.50) 100%),
+    linear-gradient(0deg,#090d17 0%,transparent 35%),
+    url("https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=1800&q=85") center/cover no-repeat;
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  width:480px;
+  height:480px;
+  border:1px solid rgba(224,17,95,.18);
+  transform:rotate(45deg);
+  right:-190px;
+  top:70px;
+}
+
+.hero-inner{
+  width:100%;
+  max-width:1280px;
+  margin:auto;
+  padding:80px 20px;
+  position:relative;
+  z-index:2;
+}
+
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  background:rgba(224,17,95,.12);
+  border:1px solid var(--borderPink);
+  color:var(--coral);
+  padding:7px 11px;
+  text-transform:uppercase;
+  letter-spacing:.11em;
+  font-size:11px;
+  font-weight:900;
+}
+
+.hero h1{
+  max-width:820px;
+  margin:18px 0 10px;
+  font-size:clamp(48px,7vw,88px);
+  line-height:.95;
+  letter-spacing:-4px;
+}
+
+.hero h1 span{
+  color:var(--pink2);
+}
+
+.hero-tagline{
+  font-size:clamp(20px,3vw,31px);
+  font-weight:850;
+  margin-bottom:15px;
+}
+
+.hero-copy{
+  max-width:720px;
+  color:#c6d0de;
+  font-size:17px;
+}
+
+.hero-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:27px;
+}
+
+.btn{
+  border:0;
+  border-radius:5px;
+  padding:13px 18px;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:850;
+  font-size:13px;
+  transition:.2s;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+}
+
+.btn-pink{
+  background:linear-gradient(135deg,var(--pink),var(--pink2));
+  color:white;
+  box-shadow:0 8px 25px rgba(224,17,95,.28);
+}
+
+.btn-outline{
+  border:1px solid var(--borderPink);
+  color:white;
+  background:rgba(0,0,0,.22);
+}
+
+/* QUICK MENU */
+
+.quickbar{
+  border-bottom:1px solid var(--border);
+  background:#080c14;
+  padding:18px 20px;
+}
+
+.quickgrid{
+  max-width:1280px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:9px;
+}
+
+.quick{
+  text-decoration:none;
+  text-align:center;
+  padding:14px 8px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:7px;
+  color:#d6deea;
+  font-size:12px;
+  font-weight:800;
+  transition:.2s;
+}
+
+.quick span{
+  display:block;
+  font-size:21px;
+  margin-bottom:3px;
+}
+
+.quick:hover{
+  border-color:var(--pink);
+  background:#171527;
+  transform:translateY(-2px);
+}
+
+/* GENERAL */
+
+.container{
+  max-width:1280px;
+  margin:auto;
+  padding:0 20px;
+}
+
+.section{
+  padding:60px 0;
+}
+
+.section-head{
+  margin-bottom:24px;
+}
+
+.section-label{
+  color:var(--coral);
+  text-transform:uppercase;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.12em;
+}
+
+.section-head h2{
+  margin:5px 0 6px;
+  font-size:clamp(30px,4vw,44px);
+  letter-spacing:-1.5px;
+}
+
+.section-head p{
+  color:var(--muted);
+  margin:0;
+  max-width:780px;
+}
+
+/* TODAY DASHBOARD */
+
+.today{
+  background:#0c111d;
+  border-bottom:1px solid var(--border);
+}
+
+.today-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+
+.today-card{
+  background:linear-gradient(145deg,var(--card),#111c2d);
+  border:1px solid var(--border);
+  border-radius:9px;
+  padding:20px;
+}
+
+.today-icon{
+  font-size:27px;
+  margin-bottom:8px;
+}
+
+.today-card small{
+  color:var(--coral);
+  font-weight:900;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.today-card h3{
+  margin:7px 0;
+  font-size:17px;
+}
+
+.today-card p{
+  color:var(--muted);
+  font-size:13px;
+  min-height:60px;
+}
+
+.today-card a{
+  color:var(--pink2);
+  font-weight:900;
+  text-decoration:none;
+  font-size:13px;
+}
+
+/* RESOURCE GRID */
+
+.resource-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+
+.resource{
+  position:relative;
+  overflow:hidden;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:9px;
+  padding:22px;
+  transition:.25s;
+}
+
+.resource:before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  bottom:0;
+  width:3px;
+  background:linear-gradient(var(--pink),var(--purple));
+  opacity:.75;
+}
+
+.resource:hover{
+  border-color:var(--borderPink);
+  transform:translateY(-3px);
+  box-shadow:var(--shadow);
+}
+
+.resource-icon{
+  font-size:30px;
+}
+
+.resource h3{
+  margin:10px 0 6px;
+}
+
+.resource p{
+  color:var(--muted);
+  font-size:13px;
+  min-height:58px;
+}
+
+.resource-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-top:13px;
+}
+
+.mini{
+  text-decoration:none;
+  padding:8px 10px;
+  background:#1b2638;
+  border:1px solid var(--border);
+  border-radius:5px;
+  color:#e6edf7;
+  font-size:11px;
+  font-weight:800;
+}
+
+.mini:hover{
+  border-color:var(--pink);
+  color:var(--coral);
+}
+
+/* FUNDING */
+
+.funding{
+  background:
+    linear-gradient(135deg,rgba(224,17,95,.10),transparent 45%),
+    #0b101b;
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+
+.funding-layout{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:18px;
+}
+
+.big-panel{
+  background:var(--card);
+  border:1px solid var(--borderPink);
+  border-radius:10px;
+  padding:28px;
+}
+
+.big-panel h3{
+  font-size:26px;
+  margin:8px 0;
+}
+
+.big-panel p{
+  color:var(--muted);
+}
+
+.fact-box{
+  margin-top:18px;
+  background:#0a0f19;
+  border-left:3px solid var(--gold);
+  padding:15px;
+  color:#cbd5e1;
+  font-size:13px;
+}
+
+.funding-list{
+  display:flex;
+  flex-direction:column;
+  gap:11px;
+}
+
+.fund-item{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:17px;
+}
+
+.fund-item strong{
+  display:block;
+  margin-bottom:5px;
+}
+
+.fund-item p{
+  margin:0 0 8px;
+  color:var(--muted);
+  font-size:12px;
+}
+
+.fund-item a{
+  color:var(--coral);
+  font-size:12px;
+  font-weight:900;
+  text-decoration:none;
+}
+
+/* STARTUP CHECKLIST */
+
+.checklist-wrap{
+  display:grid;
+  grid-template-columns:1fr .65fr;
+  gap:20px;
+}
+
+.checklist{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:10px;
+  overflow:hidden;
+}
+
+.check-item{
+  display:flex;
+  gap:13px;
+  padding:16px 18px;
+  border-bottom:1px solid var(--border);
+  align-items:flex-start;
+}
+
+.check-item:last-child{
+  border-bottom:0;
+}
+
+.check-item input{
+  margin-top:4px;
+  accent-color:var(--pink);
+  width:18px;
+  height:18px;
+}
+
+.check-item label{
+  cursor:pointer;
+}
+
+.check-item strong{
+  display:block;
+}
+
+.check-item small{
+  color:var(--muted);
+}
+
+.progress-card{
+  background:linear-gradient(145deg,#191125,#101827);
+  border:1px solid var(--borderPink);
+  border-radius:10px;
+  padding:23px;
+  height:max-content;
+  position:sticky;
+  top:100px;
+}
+
+.progress-number{
+  font-size:55px;
+  color:var(--pink2);
+  font-weight:950;
+  letter-spacing:-3px;
+}
+
+.progress-track{
+  height:8px;
+  background:#242d3c;
+  border-radius:20px;
+  overflow:hidden;
+  margin:14px 0;
+}
+
+.progress-fill{
+  height:100%;
+  width:0;
+  background:linear-gradient(90deg,var(--pink),var(--coral));
+  transition:.3s;
+}
+
+/* CALCULATORS */
+
+.calculators{
+  background:#0c111d;
+}
+
+.calc-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+
+.calc{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:9px;
+  padding:22px;
+}
+
+.calc h3{
+  margin-top:0;
+}
+
+.calc p{
+  color:var(--muted);
+  font-size:12px;
+}
+
+.field{
+  margin-bottom:11px;
+}
+
+.field label{
+  display:block;
+  color:#bbc6d5;
+  font-size:11px;
+  font-weight:800;
+  text-transform:uppercase;
+  margin-bottom:5px;
+}
+
+.field input{
+  width:100%;
+  background:#080d16;
+  border:1px solid var(--border);
+  color:white;
+  border-radius:5px;
+  padding:11px;
+  outline:none;
+}
+
+.field input:focus{
+  border-color:var(--pink);
+}
+
+.calc-btn{
+  width:100%;
+  border:0;
+  border-radius:5px;
+  padding:11px;
+  background:var(--pink);
+  color:white;
+  font-weight:900;
+}
+
+.result{
+  margin-top:13px;
+  padding:12px;
+  background:#080d16;
+  border:1px solid var(--border);
+  border-radius:5px;
+  color:var(--green);
+  font-weight:850;
+  min-height:48px;
+}
+
+/* AI SECTION */
+
+.ai-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+
+.ai-card{
+  background:linear-gradient(145deg,#131c2d,#0d1421);
+  border:1px solid var(--border);
+  border-radius:9px;
+  padding:20px;
+}
+
+.ai-card h3{
+  margin:8px 0;
+}
+
+.ai-card p{
+  color:var(--muted);
+  font-size:12px;
+}
+
+.ai-card a{
+  color:var(--coral);
+  text-decoration:none;
+  font-weight:850;
+  font-size:12px;
+}
+
+/* NEWS */
+
+.news-panel{
+  background:linear-gradient(135deg,#201127,#101827);
+  border:1px solid var(--borderPink);
+  border-radius:11px;
+  padding:28px;
+}
+
+.news-links{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  margin-top:20px;
+}
+
+.news-source{
+  background:rgba(0,0,0,.22);
+  border:1px solid var(--border);
+  border-radius:6px;
+  padding:15px;
+  text-decoration:none;
+  transition:.2s;
+}
+
+.news-source:hover{
+  border-color:var(--pink);
+  transform:translateY(-2px);
+}
+
+.news-source strong{
+  display:block;
+  color:white;
+}
+
+.news-source small{
+  color:var(--muted);
+}
+
+/* SAFETY */
+
+.notice{
+  background:#171521;
+  border:1px solid #554626;
+  border-left:4px solid var(--gold);
+  border-radius:7px;
+  padding:17px;
+  color:#d6cfbd;
+  font-size:12px;
+}
+
+/* FOOTER */
+
+footer{
+  background:#050811;
+  border-top:1px solid var(--border);
+  padding:45px 20px 25px;
+  color:var(--muted);
+}
+
+.footer-grid{
+  max-width:1280px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  gap:30px;
+}
+
+.footer-logo{
+  font-size:25px;
+  font-weight:950;
+  font-style:italic;
+  color:white;
+}
+
+.footer-logo span{
+  color:var(--pink);
+}
+
+footer h4{
+  color:white;
+  margin-top:0;
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+}
+
+footer ul{
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+
+footer li{
+  margin-bottom:7px;
+}
+
+footer a{
+  color:var(--muted);
+  text-decoration:none;
+  font-size:12px;
+}
+
+footer a:hover{
+  color:var(--coral);
+}
+
+.footer-bottom{
+  max-width:1280px;
+  margin:30px auto 0;
+  padding-top:18px;
+  border-top:1px solid var(--border);
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  flex-wrap:wrap;
+  font-size:11px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1050px){
+  .quickgrid{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .today-grid,
+  .ai-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .resource-grid,
+  .calc-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:800px){
+  .navlinks{
+    display:none;
+  }
+
+  .funding-layout,
+  .checklist-wrap{
+    grid-template-columns:1fr;
+  }
+
+  .progress-card{
+    position:static;
+  }
+
+  .news-links{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:600px){
+  .hero{
+    min-height:610px;
+  }
+
+  .hero h1{
+    letter-spacing:-2.5px;
+  }
+
+  .header-button{
+    display:none;
+  }
+
+  .quickgrid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .today-grid,
+  .resource-grid,
+  .calc-grid,
+  .ai-grid,
+  .news-links,
+  .footer-grid{
+    grid-template-columns:1fr;
+  }
+}
+</style>
 </head>
+
 <body>
 
-  <!-- Live Market/News Ticker -->
-  <div class="ticker-wrap">
-    <div class="ticker-content">
-      ⚡ LIVE FEED: FEMALE-FOUNDED VC FUNDING UP 14% Q3 2026 &nbsp;&nbsp;///&nbsp;&nbsp; RAZOR SHARP: EXCLUSIVE WITH DEFENSE TECH CEO SARAH LIN &nbsp;&nbsp;///&nbsp;&nbsp; PINKRAZOR SUMMIT 2026 REGISTRATION NOW OPEN &nbsp;&nbsp;///&nbsp;&nbsp; THE CUTTING EDGE: DEEPSEEK & OPENAI BATTLE FOR ENTERPRISE AGENTS
+<div class="livebar">
+  <div class="livebar-inner">
+    <div class="live-indicator">
+      PINKRAZOR BUSINESS RESOURCE CENTER
+    </div>
+
+    <div id="currentDate">
+      Loading today's date...
     </div>
   </div>
+</div>
 
-  <!-- Header -->
-  <header>
-    <a href="#" class="logo-container">
-      <div class="logo-icon">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-      </div>
+<header>
+  <div class="nav">
+
+    <a href="#" class="logo">
+      <div class="logo-blade">⚡</div>
       <div class="logo-text">PINK<span>RAZOR</span></div>
     </a>
 
-    <nav>
-      <a href="#" class="nav-link active" onclick="filterCategory('all')">Latest</a>
-      <a href="#" class="nav-link" onclick="filterCategory('tech')">Tech & AI</a>
-      <a href="#" class="nav-link" onclick="filterCategory('vc')">Venture Capital</a>
-      <a href="#" class="nav-link" onclick="filterCategory('interviews')">Razor Sharp</a>
-      <a href="#" class="nav-link" onclick="filterCategory('playbooks')">Playbooks</a>
+    <nav class="navlinks">
+      <a href="#today">Today</a>
+      <a href="#funding">Funding</a>
+      <a href="#resources">Resources</a>
+      <a href="#startup">Start</a>
+      <a href="#tools">Tools</a>
+      <a href="#ai">AI</a>
     </nav>
 
-    <div style="display: flex; gap: 0.75rem;">
-      <button class="btn-outline" onclick="openModal('membershipModal')">Join Network</button>
-      <button class="btn-magenta" onclick="openModal('newsletterModal')">The Cutting Edge ⚡</button>
+    <a class="header-button" href="#resources">
+      Business Resources
+    </a>
+
+  </div>
+</header>
+
+<section class="hero">
+
+  <div class="hero-inner">
+
+    <div class="eyebrow">
+      ⚡ Built for Women Who Build
     </div>
-  </header>
 
-  <main>
-    <!-- Featured Hero Section -->
-    <section class="hero-grid">
-      <div class="hero-card" onclick="openModal('interviewModal')">
-        <span class="tag">Razor Sharp • Cover Story</span>
-        <h1 class="hero-title">"We Stop Asking For Permission": How Elena Vance Built a $2.4B Quantum Security Powerhouse</h1>
-        <p class="hero-excerpt">From pitching skeptical male angel syndicates to securing defense-grade enterprise contracts, Vance breaks down her playbook for scaling hard-tech startups in 2026.</p>
-        <div class="meta">
-          <span>BY MAYA CHEN</span> • <span>SEPT 4, 2026</span> • <span>8 MIN READ</span>
+    <h1>
+      THINK SHARP.<br>
+      <span>BUILD BOLD.</span>
+    </h1>
+
+    <div class="hero-tagline">
+      Sharp Tools. Real Opportunities. Bold Women.
+    </div>
+
+    <p class="hero-copy">
+      PinkRazor.com brings together free business tools, funding resources,
+      government programs, certification information, technology resources
+      and practical guidance for women entrepreneurs, founders and business leaders.
+    </p>
+
+    <div class="hero-actions">
+
+      <a class="btn btn-pink" href="#funding">
+        Find Funding Resources
+      </a>
+
+      <a class="btn btn-outline" href="#tools">
+        Use Business Tools
+      </a>
+
+      <a class="btn btn-outline" href="#startup">
+        Start a Business
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+<div class="quickbar">
+  <div class="quickgrid">
+
+    <a class="quick" href="#funding">
+      <span>💰</span>
+      Funding
+    </a>
+
+    <a class="quick" href="#certification">
+      <span>✓</span>
+      Certification
+    </a>
+
+    <a class="quick" href="#startup">
+      <span>🚀</span>
+      Start a Business
+    </a>
+
+    <a class="quick" href="#tools">
+      <span>🧮</span>
+      Calculators
+    </a>
+
+    <a class="quick" href="#ai">
+      <span>⚡</span>
+      AI & Technology
+    </a>
+
+    <a class="quick" href="#news">
+      <span>📰</span>
+      Business News
+    </a>
+
+  </div>
+</div>
+
+<main>
+
+<section class="section today" id="today">
+
+  <div class="container">
+
+    <div class="section-head">
+      <div class="section-label">Today's Business Desk</div>
+      <h2>Useful information right now</h2>
+      <p>
+        PinkRazor connects you directly with authoritative resources that are
+        updated by the organizations responsible for them.
+      </p>
+    </div>
+
+    <div class="today-grid">
+
+      <article class="today-card">
+        <div class="today-icon">💵</div>
+        <small>Funding Opportunities</small>
+        <h3>Search Current Federal Grants</h3>
+        <p>
+          Search current federal grant opportunities and review eligibility
+          requirements directly through Grants.gov.
+        </p>
+        <a href="https://www.grants.gov/search-grants" target="_blank" rel="noopener">
+          Search Current Grants →
+        </a>
+      </article>
+
+      <article class="today-card">
+        <div class="today-icon">🏛️</div>
+        <small>Government Contracts</small>
+        <h3>Find Current Opportunities</h3>
+        <p>
+          Search active federal contracting opportunities, awards and government
+          procurement information.
+        </p>
+        <a href="https://sam.gov/content/opportunities" target="_blank" rel="noopener">
+          Search SAM.gov →
+        </a>
+      </article>
+
+      <article class="today-card">
+        <div class="today-icon">📈</div>
+        <small>Economic Intelligence</small>
+        <h3>U.S. Economic Data</h3>
+        <p>
+          Review current employment, inflation, industry and economic statistics
+          from official federal sources.
+        </p>
+        <a href="https://www.bls.gov/" target="_blank" rel="noopener">
+          View Current Data →
+        </a>
+      </article>
+
+      <article class="today-card">
+        <div class="today-icon">📰</div>
+        <small>Business News</small>
+        <h3>Today's Business Headlines</h3>
+        <p>
+          Open current business and entrepreneurship coverage from established
+          news and business sources.
+        </p>
+        <a href="#news">
+          Open News Desk →
+        </a>
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="section funding" id="funding">
+
+  <div class="container">
+
+    <div class="section-head">
+      <div class="section-label">Funding & Capital</div>
+      <h2>Find money to build and grow</h2>
+      <p>
+        Start with legitimate sources for grants, loans, government programs,
+        investment information and business financing.
+      </p>
+    </div>
+
+    <div class="funding-layout">
+
+      <div class="big-panel">
+
+        <div class="eyebrow">
+          💰 PinkRazor Funding Center
         </div>
-      </div>
 
-      <div class="side-panel">
-        <div class="panel-box highlight">
-          <div class="panel-header">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            The Cutting Edge Briefing
-          </div>
-          <div class="panel-title">AI Agents & The New Boardroom Dynamics</div>
-          <div class="panel-desc">How female executives are deploying autonomous workflow agents to bypass traditional middle-management bottlenecks.</div>
-          <button class="btn-magenta" style="width: 100%; font-size: 0.75rem;" onclick="openModal('newsletterModal')">Subscribe to Daily Briefing</button>
+        <h3>
+          Start with legitimate funding sources.
+        </h3>
+
+        <p>
+          There is no single source of free money for every entrepreneur.
+          Eligibility varies by program, industry, location, business stage
+          and intended use of funds.
+        </p>
+
+        <div class="resource-links">
+
+          <a class="btn btn-pink"
+             href="https://www.grants.gov/search-grants"
+             target="_blank"
+             rel="noopener">
+             Search Grants.gov
+          </a>
+
+          <a class="btn btn-outline"
+             href="https://www.sba.gov/funding-programs/loans"
+             target="_blank"
+             rel="noopener">
+             SBA Loan Programs
+          </a>
+
         </div>
 
-        <div class="panel-box">
-          <div class="panel-header">⚡ VC Pulse Check</div>
-          <div class="panel-title">$150M Female Founders Fund IV Announced</div>
-          <div class="panel-desc">Targeting B2B SaaS, biotech, and autonomous systems across North America and Europe.</div>
+        <div class="fact-box">
+          <strong>PinkRazor Funding Rule:</strong>
+          Never pay someone simply because they promise a guaranteed government
+          grant, guaranteed loan approval or guaranteed investment. Verify the
+          opportunity and organization independently before providing money or
+          sensitive information.
         </div>
-      </div>
-    </section>
 
-    <!-- Controls / Filters -->
-    <section class="controls-bar">
-      <div class="category-filters">
-        <button class="filter-btn active" onclick="filterCategory('all')">All Stories</button>
-        <button class="filter-btn" onclick="filterCategory('tech')">Tech & AI</button>
-        <button class="filter-btn" onclick="filterCategory('vc')">Venture Capital</button>
-        <button class="filter-btn" onclick="filterCategory('interviews')">Razor Sharp Q&As</button>
-        <button class="filter-btn" onclick="filterCategory('playbooks')">Tool Playbooks</button>
       </div>
 
-      <div class="search-box">
-        <input type="text" id="searchInput" onkeyup="searchArticles()" placeholder="Search insights, founders..." />
-      </div>
-    </section>
+      <div class="funding-list">
 
-    <!-- Articles Grid -->
-    <section class="articles-grid" id="articlesGrid">
-      <!-- Article 1 -->
-      <article class="article-card" data-category="vc" onclick="openModal('articleModal1')">
-        <div class="article-img" style="background-image: url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=600&q=80');"></div>
-        <div class="article-body">
-          <span class="tag" style="background: var(--navy); border: 1px solid var(--border-bright);">Venture Capital</span>
-          <h3 class="article-title">Term Sheet Tear Down: Negotiating Liquidation Preferences in 2026</h3>
-          <p class="article-excerpt">Don't sign away your downside protection. Here is how partner-level lawyers advise female founders to structure Series A/B rounds.</p>
-          <div class="meta">5 MIN READ • FINANCES</div>
+        <article class="fund-item">
+          <strong>Federal Grants</strong>
+          <p>Search federal grant opportunities and eligibility requirements.</p>
+          <a href="https://www.grants.gov/" target="_blank" rel="noopener">
+            Grants.gov →
+          </a>
+        </article>
+
+        <article class="fund-item">
+          <strong>SBA Loans</strong>
+          <p>Learn about SBA-backed lending programs for qualifying businesses.</p>
+          <a href="https://www.sba.gov/funding-programs/loans" target="_blank" rel="noopener">
+            SBA Funding →
+          </a>
+        </article>
+
+        <article class="fund-item">
+          <strong>SBIR / STTR</strong>
+          <p>Explore federal research and technology funding opportunities for eligible small businesses.</p>
+          <a href="https://www.sbir.gov/" target="_blank" rel="noopener">
+            SBIR.gov →
+          </a>
+        </article>
+
+        <article class="fund-item">
+          <strong>Small Business Investment</strong>
+          <p>Learn about SBA programs connecting investment capital with qualifying small businesses.</p>
+          <a href="https://www.sba.gov/funding-programs/investment-capital" target="_blank" rel="noopener">
+            Investment Capital →
+          </a>
+        </article>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="section" id="resources">
+
+  <div class="container">
+
+    <div class="section-head">
+      <div class="section-label">Entrepreneur Resource Center</div>
+      <h2>Everything you need in one place</h2>
+      <p>
+        Direct access to useful government, nonprofit and business resources
+        for launching and growing a company.
+      </p>
+    </div>
+
+    <div class="resource-grid">
+
+      <article class="resource">
+        <div class="resource-icon">👩‍💼</div>
+        <h3>Women's Business Centers</h3>
+        <p>
+          Find counseling, training and business assistance through the SBA
+          Women's Business Center network.
+        </p>
+
+        <div class="resource-links">
+          <a class="mini"
+             href="https://www.sba.gov/local-assistance/resource-partners/womens-business-centers"
+             target="_blank"
+             rel="noopener">
+             Find a Center
+          </a>
         </div>
       </article>
 
-      <!-- Article 2 -->
-      <article class="article-card" data-category="tech" onclick="openModal('articleModal2')">
-        <div class="article-img" style="background-image: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80');"></div>
-        <div class="article-body">
-          <span class="tag" style="background: var(--navy); border: 1px solid var(--border-bright);">Tech & AI</span>
-          <h3 class="article-title">Top 10 AI Stack Tools Engineering Leads Are Deploying This Quarter</h3>
-          <p class="article-excerpt">From automated code review models to synthetic data generators—the essential tools high-growth teams rely on.</p>
-          <div class="meta">6 MIN READ • TECH STACK</div>
+      <article class="resource" id="certification">
+        <div class="resource-icon">✓</div>
+        <h3>Women-Owned Certification</h3>
+        <p>
+          Learn about Women-Owned Small Business and Economically Disadvantaged
+          Women-Owned Small Business certification.
+        </p>
+
+        <div class="resource-links">
+          <a class="mini"
+             href="https://www.sba.gov/federal-contracting/contracting-assistance-programs/women-owned-small-business-federal-contract-program"
+             target="_blank"
+             rel="noopener">
+             WOSB Program
+          </a>
+
+          <a class="mini"
+             href="https://certifications.sba.gov/"
+             target="_blank"
+             rel="noopener">
+             SBA Certifications
+          </a>
         </div>
       </article>
 
-      <!-- Article 3 -->
-      <article class="article-card" data-category="interviews" onclick="openModal('interviewModal')">
-        <div class="article-img" style="background-image: url('https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=600&q=80');"></div>
-        <div class="article-body">
-          <span class="tag">Razor Sharp</span>
-          <h3 class="article-title">From Solo Dev to $80M ARR: Jessica Thorne on Bootstrapping Security Infrastructure</h3>
-          <p class="article-excerpt">"Venture money isn't validation—paying customers are." Thorne details her 4-year journey without taking external dilution.</p>
-          <div class="meta">10 MIN READ • INTERVIEW</div>
+      <article class="resource">
+        <div class="resource-icon">🏛️</div>
+        <h3>Government Contracting</h3>
+        <p>
+          Learn how federal contracting works and search for active government
+          business opportunities.
+        </p>
+
+        <div class="resource-links">
+          <a class="mini"
+             href="https://www.sba.gov/federal-contracting"
+             target="_blank"
+             rel="noopener">
+             SBA Contracting
+          </a>
+
+          <a class="mini"
+             href="https://sam.gov/"
+             target="_blank"
+             rel="noopener">
+             SAM.gov
+          </a>
         </div>
       </article>
 
-      <!-- Article 4 -->
-      <article class="article-card" data-category="playbooks" onclick="openModal('articleModal3')">
-        <div class="article-img" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80');"></div>
-        <div class="article-body">
-          <span class="tag" style="background: var(--navy); border: 1px solid var(--border-bright);">Playbooks</span>
-          <h3 class="article-title">The Executive Compensation Playbook: Equity, Severance & Board Rights</h3>
-          <p class="article-excerpt">A tactical framework for C-suite women negotiating compensation packages at late-stage tech startups.</p>
-          <div class="meta">7 MIN READ • CAREER</div>
+      <article class="resource">
+        <div class="resource-icon">🧭</div>
+        <h3>SCORE Mentoring</h3>
+        <p>
+          Explore mentoring, workshops and educational resources for small
+          business owners and entrepreneurs.
+        </p>
+
+        <div class="resource-links">
+          <a class="mini"
+             href="https://www.score.org/"
+             target="_blank"
+             rel="noopener">
+             Visit SCORE
+          </a>
         </div>
       </article>
-    </section>
 
-    <!-- Annual Summit Banner -->
-    <section class="summit-banner">
-      <span class="tag">November 12-14, 2026 • San Francisco & Virtual</span>
-      <h2>THE PINKRAZOR GLOBAL SUMMIT 2026</h2>
-      <p>3 Days of closed-door keynotes, VC pitch sessions, and executive roundtables for high-impact women in tech, finance, and entrepreneurship.</p>
-      <button class="btn-magenta" style="font-size: 0.9rem; padding: 0.8rem 2rem;" onclick="openModal('summitModal')">Request Delegate Invitation</button>
-    </section>
-  </main>
+      <article class="resource">
+        <div class="resource-icon">🏢</div>
+        <h3>Small Business Development Centers</h3>
+        <p>
+          Find local Small Business Development Center counseling and business
+          assistance.
+        </p>
 
-  <!-- Modals -->
-  <!-- Newsletter Modal -->
-  <div class="modal-overlay" id="newsletterModal">
-    <div class="modal">
-      <button class="modal-close" onclick="closeModal('newsletterModal')">&times;</button>
-      <span class="tag">The Cutting Edge</span>
-      <h2 style="color: #fff; margin-top: 0.5rem; margin-bottom: 0.5rem;">Sharp Insights Delivered Daily</h2>
-      <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">Join 65,000+ female founders, investors, and operators getting our morning brief on AI, venture deals, and executive moves.</p>
-      <form onsubmit="event.preventDefault(); alert('Subscribed to The Cutting Edge!'); closeModal('newsletterModal');">
-        <div class="form-group">
-          <label>Work Email</label>
-          <input type="email" placeholder="name@company.com" required />
+        <div class="resource-links">
+          <a class="mini"
+             href="https://www.sba.gov/local-assistance/resource-partners/small-business-development-centers-sbdc"
+             target="_blank"
+             rel="noopener">
+             Find an SBDC
+          </a>
         </div>
-        <div class="form-group">
-          <label>Primary Role</label>
-          <select>
-            <option>Founder / CEO</option>
-            <option>Venture Capitalist / Investor</option>
-            <option>Tech / Product Executive</option>
-            <option>Other Leader</option>
-          </select>
+      </article>
+
+      <article class="resource">
+        <div class="resource-icon">🔬</div>
+        <h3>Innovation & Research</h3>
+        <p>
+          Explore federal innovation programs and research funding opportunities
+          for qualifying technology companies.
+        </p>
+
+        <div class="resource-links">
+          <a class="mini"
+             href="https://www.sbir.gov/"
+             target="_blank"
+             rel="noopener">
+             SBIR / STTR
+          </a>
         </div>
-        <button class="btn-magenta" style="width: 100%; margin-top: 0.5rem;" type="submit">Subscribe Now</button>
-      </form>
+      </article>
+
+      <article class="resource">
+        <div class="resource-icon">©️</div>
+        <h3>Trademarks & Intellectual Property</h3>
+        <p>
+          Research trademarks and learn about protecting intellectual property
+          directly from the U.S. Patent and Trademark Office.
+        </p>
+
+        <div class="resource-links">
+          <a class="mini"
+             href="https://www.uspto.gov/trademarks"
+             target="_blank"
+             rel="noopener">
+             Trademarks
+          </a>
+
+          <a class="mini"
+             href="https://www.uspto.gov/patents"
+             target="_blank"
+             rel="noopener">
+             Patents
+          </a>
+        </div>
+      </article>
+
+      <article class="resource">
+        <div class="resource-icon">🧾</div>
+        <h3>Federal Tax Resources</h3>
+        <p>
+          Access IRS information for businesses, self-employed individuals and
+          employers.
+        </p>
+
+        <div class="resource-links">
+          <a class="mini"
+             href="https://www.irs.gov/businesses"
+             target="_blank"
+             rel="noopener">
+             IRS Business
+          </a>
+        </div>
+      </article>
+
+      <article class="resource">
+        <div class="resource-icon">🪪</div>
+        <h3>Employer Identification Number</h3>
+        <p>
+          Learn whether your business needs an EIN and use the official IRS
+          application process.
+        </p>
+
+        <div class="resource-links">
+          <a class="mini"
+             href="https://www.irs.gov/businesses/small-businesses-self-employed/employer-id-numbers"
+             target="_blank"
+             rel="noopener">
+             EIN Information
+          </a>
+        </div>
+      </article>
+
     </div>
+
   </div>
 
-  <!-- Razor Sharp Interview Modal -->
-  <div class="modal-overlay" id="interviewModal">
-    <div class="modal" style="max-width: 750px;">
-      <button class="modal-close" onclick="closeModal('interviewModal')">&times;</button>
-      <span class="tag">Razor Sharp • Executive Interview</span>
-      <h2 style="color: #fff; margin-top: 0.5rem; margin-bottom: 0.8rem;">"We Stop Asking For Permission": Elena Vance on Quantum Security & Scaling</h2>
-      <div class="meta" style="margin-bottom: 1.5rem;">PUBLISHED SEPT 4, 2026 • BY MAYA CHEN</div>
-      
-      <div style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.7;">
-        <p style="margin-bottom: 1rem;"><strong>PinkRazor:</strong> Elena, you raised a $45M Series B in a market where hard-tech investments were historically down. What was the critical turning point in pitch rooms?</p>
-        
-        <p style="margin-bottom: 1rem; background: rgba(224, 17, 95, 0.1); padding: 1rem; border-left: 3px solid var(--magenta);"><strong>Elena Vance:</strong> "We stopped apologizing for being early or technical. Instead of leading with market sizing slides, we brought our live threat-detection hardware onto the table and executed a real-time breach simulation. Proof of execution beats pitch decks every time."</p>
+</section>
 
-        <p style="margin-bottom: 1rem;"><strong>PinkRazor:</strong> What advice do you give female founders facing patronizing line of questioning from syndicate partners?</p>
+<section class="section" id="startup">
 
-        <p style="margin-bottom: 1rem;"><strong>Elena Vance:</strong> "Reframe the conversation immediately. If they ask about downside risks while asking male founders about market upside, flip the script: <em>'While our risk-mitigation framework is best-in-class, let me walk you through how we capture 40% market share over 36 months.'</em> Own the growth narrative."</p>
+  <div class="container">
+
+    <div class="section-head">
+      <div class="section-label">PinkRazor Startup Checklist</div>
+      <h2>Turn the idea into a business</h2>
+      <p>
+        Use this simple checklist to organize the major steps involved in
+        starting a business. Requirements vary by state and industry.
+      </p>
+    </div>
+
+    <div class="checklist-wrap">
+
+      <div class="checklist">
+
+        <div class="check-item">
+          <input class="startup-check" type="checkbox" id="step1">
+          <label for="step1">
+            <strong>1. Define the business</strong>
+            <small>Clarify the customer, problem, product or service and how the business will make money.</small>
+          </label>
+        </div>
+
+        <div class="check-item">
+          <input class="startup-check" type="checkbox" id="step2">
+          <label for="step2">
+            <strong>2. Research the market</strong>
+            <small>Understand competitors, customers, pricing and demand before spending heavily.</small>
+          </label>
+        </div>
+
+        <div class="check-item">
+          <input class="startup-check" type="checkbox" id="step3">
+          <label for="step3">
+            <strong>3. Choose a business structure</strong>
+            <small>Review sole proprietorship, partnership, LLC and corporation options.</small>
+          </label>
+        </div>
+
+        <div class="check-item">
+          <input class="startup-check" type="checkbox" id="step4">
+          <label for="step4">
+            <strong>4. Choose and protect the name</strong>
+            <small>Check state availability, domain availability and potential trademark conflicts.</small>
+          </label>
+        </div>
+
+        <div class="check-item">
+          <input class="startup-check" type="checkbox" id="step5">
+          <label for="step5">
+            <strong>5. Register the business</strong>
+            <small>Complete applicable state and local registration requirements.</small>
+          </label>
+        </div>
+
+        <div class="check-item">
+          <input class="startup-check" type="checkbox" id="step6">
+          <label for="step6">
+            <strong>6. Obtain tax identification</strong>
+            <small>Determine whether an EIN and state tax registrations are required.</small>
+          </label>
+        </div>
+
+        <div class="check-item">
+          <input class="startup-check" type="checkbox" id="step7">
+          <label for="step7">
+            <strong>7. Check licenses and permits</strong>
+            <small>Identify federal, state, county and city requirements for your activity and location.</small>
+          </label>
+        </div>
+
+        <div class="check-item">
+          <input class="startup-check" type="checkbox" id="step8">
+          <label for="step8">
+            <strong>8. Set up business banking and accounting</strong>
+            <small>Separate business finances and establish a reliable recordkeeping process.</small>
+          </label>
+        </div>
+
+        <div class="check-item">
+          <input class="startup-check" type="checkbox" id="step9">
+          <label for="step9">
+            <strong>9. Review insurance needs</strong>
+            <small>Evaluate liability, property, workers compensation and other appropriate coverage.</small>
+          </label>
+        </div>
+
+        <div class="check-item">
+          <input class="startup-check" type="checkbox" id="step10">
+          <label for="step10">
+            <strong>10. Launch and measure</strong>
+            <small>Start selling, track results, listen to customers and adjust based on real data.</small>
+          </label>
+        </div>
+
       </div>
 
-      <button class="btn-outline" style="width: 100%; margin-top: 1.5rem;" onclick="closeModal('interviewModal')">Close Interview</button>
+      <aside class="progress-card">
+
+        <div class="section-label">
+          Your Progress
+        </div>
+
+        <div class="progress-number" id="progressNumber">
+          0%
+        </div>
+
+        <div class="progress-track">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <p style="color:var(--muted);font-size:13px;">
+          Your checklist progress is saved only in this browser using local storage.
+          PinkRazor does not receive the information.
+        </p>
+
+        <a class="btn btn-pink"
+           href="https://www.sba.gov/business-guide/10-steps-start-your-business"
+           target="_blank"
+           rel="noopener"
+           style="width:100%;margin-top:8px;">
+           SBA Startup Guide
+        </a>
+
+        <button class="btn btn-outline"
+                id="resetChecklist"
+                style="width:100%;margin-top:8px;">
+          Reset Checklist
+        </button>
+
+      </aside>
+
     </div>
+
   </div>
 
-  <!-- Network Membership Modal -->
-  <div class="modal-overlay" id="membershipModal">
-    <div class="modal">
-      <button class="modal-close" onclick="closeModal('membershipModal')">&times;</button>
-      <span class="tag">Exclusive Community</span>
-      <h2 style="color: #fff; margin-top: 0.5rem; margin-bottom: 0.5rem;">Join PinkRazor Executive Network</h2>
-      <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">Vetted peer groups, LP pitch access, and private dealflow channels for accredited female leaders.</p>
-      <form onsubmit="event.preventDefault(); alert('Application submitted for review.'); closeModal('membershipModal');">
-        <div class="form-group">
-          <label>Full Name</label>
-          <input type="text" placeholder="Elena Vance" required />
-        </div>
-        <div class="form-group">
-          <label>LinkedIn Profile URL</label>
-          <input type="url" placeholder="https://linkedin.com/in/..." required />
-        </div>
-        <button class="btn-magenta" style="width: 100%; margin-top: 0.5rem;" type="submit">Submit Membership Application</button>
-      </form>
+</section>
+
+<section class="section calculators" id="tools">
+
+  <div class="container">
+
+    <div class="section-head">
+      <div class="section-label">Free Business Tools</div>
+      <h2>Know your numbers</h2>
+      <p>
+        Simple calculators for everyday business planning. Results are estimates
+        and are calculated entirely in your browser.
+      </p>
     </div>
+
+    <div class="calc-grid">
+
+      <article class="calc">
+
+        <h3>Break-Even Calculator</h3>
+
+        <p>
+          Estimate how many units you need to sell to cover fixed costs.
+        </p>
+
+        <div class="field">
+          <label>Monthly Fixed Costs ($)</label>
+          <input id="fixedCosts" type="number" min="0" placeholder="5000">
+        </div>
+
+        <div class="field">
+          <label>Selling Price Per Unit ($)</label>
+          <input id="sellingPrice" type="number" min="0" step="0.01" placeholder="100">
+        </div>
+
+        <div class="field">
+          <label>Variable Cost Per Unit ($)</label>
+          <input id="variableCost" type="number" min="0" step="0.01" placeholder="40">
+        </div>
+
+        <button class="calc-btn" onclick="calculateBreakEven()">
+          Calculate Break-Even
+        </button>
+
+        <div class="result" id="breakEvenResult">
+          Enter your numbers above.
+        </div>
+
+      </article>
+
+      <article class="calc">
+
+        <h3>Profit Margin Calculator</h3>
+
+        <p>
+          Estimate gross profit and gross profit margin.
+        </p>
+
+        <div class="field">
+          <label>Revenue ($)</label>
+          <input id="revenue" type="number" min="0" step="0.01" placeholder="10000">
+        </div>
+
+        <div class="field">
+          <label>Cost of Goods / Services ($)</label>
+          <input id="costGoods" type="number" min="0" step="0.01" placeholder="6000">
+        </div>
+
+        <button class="calc-btn" onclick="calculateMargin()">
+          Calculate Margin
+        </button>
+
+        <div class="result" id="marginResult">
+          Enter your numbers above.
+        </div>
+
+      </article>
+
+      <article class="calc">
+
+        <h3>Loan Payment Calculator</h3>
+
+        <p>
+          Estimate a monthly payment for a fixed-rate amortizing loan.
+        </p>
+
+        <div class="field">
+          <label>Loan Amount ($)</label>
+          <input id="loanAmount" type="number" min="0" placeholder="50000">
+        </div>
+
+        <div class="field">
+          <label>Annual Interest Rate (%)</label>
+          <input id="interestRate" type="number" min="0" step="0.01" placeholder="8">
+        </div>
+
+        <div class="field">
+          <label>Loan Term (Years)</label>
+          <input id="loanYears" type="number" min="0" step="1" placeholder="5">
+        </div>
+
+        <button class="calc-btn" onclick="calculateLoan()">
+          Calculate Payment
+        </button>
+
+        <div class="result" id="loanResult">
+          Enter your numbers above.
+        </div>
+
+      </article>
+
+      <article class="calc">
+
+        <h3>Startup Cost Calculator</h3>
+
+        <p>
+          Add major startup expenses for a quick initial estimate.
+        </p>
+
+        <div class="field">
+          <label>Equipment ($)</label>
+          <input class="startup-cost" type="number" min="0" placeholder="5000">
+        </div>
+
+        <div class="field">
+          <label>Inventory ($)</label>
+          <input class="startup-cost" type="number" min="0" placeholder="3000">
+        </div>
+
+        <div class="field">
+          <label>Marketing ($)</label>
+          <input class="startup-cost" type="number" min="0" placeholder="2000">
+        </div>
+
+        <div class="field">
+          <label>Legal / Registration ($)</label>
+          <input class="startup-cost" type="number" min="0" placeholder="500">
+        </div>
+
+        <div class="field">
+          <label>Other Startup Costs ($)</label>
+          <input class="startup-cost" type="number" min="0" placeholder="1000">
+        </div>
+
+        <button class="calc-btn" onclick="calculateStartup()">
+          Calculate Startup Cost
+        </button>
+
+        <div class="result" id="startupResult">
+          Enter your expected costs above.
+        </div>
+
+      </article>
+
+      <article class="calc">
+
+        <h3>Pricing Calculator</h3>
+
+        <p>
+          Estimate a selling price based on cost and desired gross margin.
+        </p>
+
+        <div class="field">
+          <label>Product / Service Cost ($)</label>
+          <input id="productCost" type="number" min="0" step="0.01" placeholder="50">
+        </div>
+
+        <div class="field">
+          <label>Desired Gross Margin (%)</label>
+          <input id="desiredMargin" type="number" min="0" max="99.9" step="0.1" placeholder="40">
+        </div>
+
+        <button class="calc-btn" onclick="calculatePrice()">
+          Calculate Price
+        </button>
+
+        <div class="result" id="priceResult">
+          Enter your numbers above.
+        </div>
+
+      </article>
+
+      <article class="calc">
+
+        <h3>Revenue Goal Calculator</h3>
+
+        <p>
+          Estimate the number of sales needed to reach a revenue goal.
+        </p>
+
+        <div class="field">
+          <label>Revenue Goal ($)</label>
+          <input id="revenueGoal" type="number" min="0" placeholder="100000">
+        </div>
+
+        <div class="field">
+          <label>Average Sale ($)</label>
+          <input id="averageSale" type="number" min="0" step="0.01" placeholder="250">
+        </div>
+
+        <button class="calc-btn" onclick="calculateSalesGoal()">
+          Calculate Sales Needed
+        </button>
+
+        <div class="result" id="salesGoalResult">
+          Enter your numbers above.
+        </div>
+
+      </article>
+
+    </div>
+
   </div>
 
-  <!-- Summit Delegate Modal -->
-  <div class="modal-overlay" id="summitModal">
-    <div class="modal">
-      <button class="modal-close" onclick="closeModal('summitModal')">&times;</button>
-      <span class="tag">Summit 2026</span>
-      <h2 style="color: #fff; margin-top: 0.5rem; margin-bottom: 0.5rem;">Request Summit Passes</h2>
-      <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">San Francisco • Nov 12-14, 2026</p>
-      <form onsubmit="event.preventDefault(); alert('Summit registration request received.'); closeModal('summitModal');">
-        <div class="form-group">
-          <label>Full Name</label>
-          <input type="text" placeholder="Your Name" required />
-        </div>
-        <div class="form-group">
-          <label>Company / Organization</label>
-          <input type="text" placeholder="Company Name" required />
-        </div>
-        <button class="btn-magenta" style="width: 100%; margin-top: 0.5rem;" type="submit">Reserve Delegate Ticket</button>
-      </form>
+</section>
+
+<section class="section" id="ai">
+
+  <div class="container">
+
+    <div class="section-head">
+      <div class="section-label">AI & Technology</div>
+      <h2>Use technology to compete smarter</h2>
+      <p>
+        Explore established technology platforms that can help with productivity,
+        marketing, design, research and business operations. Features and pricing
+        can change, so verify current terms with each provider.
+      </p>
     </div>
+
+    <div class="ai-grid">
+
+      <article class="ai-card">
+        <div style="font-size:27px;">🤖</div>
+        <h3>AI Assistance</h3>
+        <p>
+          Use AI to brainstorm, research, organize ideas, analyze information
+          and improve everyday productivity.
+        </p>
+        <a href="https://chatgpt.com/" target="_blank" rel="noopener">
+          Explore ChatGPT →
+        </a>
+      </article>
+
+      <article class="ai-card">
+        <div style="font-size:27px;">🎨</div>
+        <h3>Design & Marketing</h3>
+        <p>
+          Create presentations, graphics, social content and marketing materials
+          using modern design tools.
+        </p>
+        <a href="https://www.canva.com/" target="_blank" rel="noopener">
+          Explore Canva →
+        </a>
+      </article>
+
+      <article class="ai-card">
+        <div style="font-size:27px;">📊</div>
+        <h3>Market Trends</h3>
+        <p>
+          Explore what people are searching for and compare interest in topics
+          over time.
+        </p>
+        <a href="https://trends.google.com/" target="_blank" rel="noopener">
+          Google Trends →
+        </a>
+      </article>
+
+      <article class="ai-card">
+        <div style="font-size:27px;">📚</div>
+        <h3>Digital Skills</h3>
+        <p>
+          Explore training and educational resources for digital marketing,
+          technology and business skills.
+        </p>
+        <a href="https://grow.google/" target="_blank" rel="noopener">
+          Grow with Google →
+        </a>
+      </article>
+
+    </div>
+
   </div>
 
-  <!-- Footer -->
-  <footer>
-    <div class="footer-grid">
-      <div>
-        <div class="logo-text" style="font-size: 1.4rem; margin-bottom: 1rem;">PINK<span>RAZOR</span></div>
-        <p style="max-width: 320px; line-height: 1.6;">Sharp insights, deal intelligence, and executive playbooks for bold women shaping tech, venture capital, and cutting-edge culture.</p>
+</section>
+
+<section class="section" id="news">
+
+  <div class="container">
+
+    <div class="news-panel">
+
+      <div class="section-label">
+        Current Information
       </div>
 
-      <div class="footer-col">
-        <h4>Editorial</h4>
-        <ul>
-          <li><a href="#" onclick="filterCategory('tech')">Tech & AI</a></li>
-          <li><a href="#" onclick="filterCategory('vc')">Venture Capital</a></li>
-          <li><a href="#" onclick="filterCategory('interviews')">Razor Sharp Q&As</a></li>
-          <li><a href="#" onclick="filterCategory('playbooks')">Executive Playbooks</a></li>
-        </ul>
+      <h2 style="font-size:35px;margin:7px 0;">
+        PinkRazor Business News Desk
+      </h2>
+
+      <p style="color:var(--muted);max-width:780px;">
+        Rather than displaying invented headlines or outdated statistics,
+        PinkRazor connects you directly with established sources where you can
+        read their current reporting and business information.
+      </p>
+
+      <div class="news-links">
+
+        <a class="news-source"
+           href="https://www.reuters.com/business/"
+           target="_blank"
+           rel="noopener">
+          <strong>Reuters Business</strong>
+          <small>Current business reporting</small>
+        </a>
+
+        <a class="news-source"
+           href="https://www.cnbc.com/entrepreneurship/"
+           target="_blank"
+           rel="noopener">
+          <strong>CNBC</strong>
+          <small>Entrepreneurship coverage</small>
+        </a>
+
+        <a class="news-source"
+           href="https://www.sba.gov/"
+           target="_blank"
+           rel="noopener">
+          <strong>U.S. SBA</strong>
+          <small>Small business programs</small>
+        </a>
+
+        <a class="news-source"
+           href="https://www.bls.gov/"
+           target="_blank"
+           rel="noopener">
+          <strong>BLS</strong>
+          <small>Official economic data</small>
+        </a>
+
+        <a class="news-source"
+           href="https://www.sec.gov/newsroom"
+           target="_blank"
+           rel="noopener">
+          <strong>SEC Newsroom</strong>
+          <small>Markets and regulation</small>
+        </a>
+
+        <a class="news-source"
+           href="https://www.federalreserve.gov/newsevents.htm"
+           target="_blank"
+           rel="noopener">
+          <strong>Federal Reserve</strong>
+          <small>Economic and policy updates</small>
+        </a>
+
+        <a class="news-source"
+           href="https://www.grants.gov/"
+           target="_blank"
+           rel="noopener">
+          <strong>Grants.gov</strong>
+          <small>Current grant opportunities</small>
+        </a>
+
+        <a class="news-source"
+           href="https://sam.gov/"
+           target="_blank"
+           rel="noopener">
+          <strong>SAM.gov</strong>
+          <small>Federal opportunities</small>
+        </a>
+
       </div>
 
-      <div class="footer-col">
-        <h4>Monetization & Network</h4>
-        <ul>
-          <li><a href="#" onclick="openModal('membershipModal')">Executive Membership</a></li>
-          <li><a href="#" onclick="openModal('summitModal')">Annual Summit 2026</a></li>
-          <li><a href="#" onclick="openModal('newsletterModal')">Sponsor The Briefing</a></li>
-          <li><a href="#">Tech Stack Directory</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4>Legal & Corporate</h4>
-        <ul>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Terms of Service</a></li>
-          <li><a href="#">Editorial Guidelines</a></li>
-          <li><a href="#">Contact Newsroom</a></li>
-        </ul>
-      </div>
     </div>
 
-    <div class="footer-bottom">
-      <div>&copy; 2026 PinkRazor Media Group. All rights reserved.</div>
-      <div style="font-family: monospace; color: var(--coral);">SHARP INSIGHTS FOR BOLD WOMEN</div>
+  </div>
+
+</section>
+
+<section class="section">
+
+  <div class="container">
+
+    <div class="notice">
+      <strong>Important Information:</strong>
+      PinkRazor.com is an independent informational resource and is not affiliated
+      with or endorsed by the U.S. Small Business Administration, Grants.gov,
+      SAM.gov, IRS, USPTO, SCORE, any government agency, news organization,
+      financial institution or other third-party resource linked on this website.
+      Programs, grants, loans, certifications, deadlines, eligibility requirements,
+      interest rates and other information may change. Always verify important
+      information directly with the responsible organization. PinkRazor.com does
+      not provide legal, tax, accounting, investment or financial advice.
     </div>
-  </footer>
 
-  <script>
-    function openModal(id) {
-      document.getElementById(id).classList.add('active');
-    }
+  </div>
 
-    function closeModal(id) {
-      document.getElementById(id).classList.remove('active');
-    }
+</section>
 
-    function filterCategory(cat) {
-      const cards = document.querySelectorAll('.article-card');
-      const buttons = document.querySelectorAll('.filter-btn');
+</main>
 
-      buttons.forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
+<footer>
 
-      cards.forEach(card => {
-        if (cat === 'all' || card.getAttribute('data-category') === cat) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    }
+  <div class="footer-grid">
 
-    function searchArticles() {
-      const query = document.getElementById('searchInput').value.toLowerCase();
-      const cards = document.querySelectorAll('.article-card');
+    <div>
 
-      cards.forEach(card => {
-        const text = card.innerText.toLowerCase();
-        if (text.includes(query)) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    }
+      <div class="footer-logo">
+        PINK<span>RAZOR</span>
+      </div>
 
-    // Close modal on click outside
-    window.onclick = function(e) {
-      if (e.target.classList.contains('modal-overlay')) {
-        e.target.classList.remove('active');
+      <p style="max-width:430px;font-size:12px;line-height:1.7;">
+        Sharp tools, real opportunities and practical resources for women
+        entrepreneurs, founders and business leaders.
+      </p>
+
+      <p style="color:var(--coral);font-weight:800;font-size:12px;">
+        THINK SHARP. BUILD BOLD.
+      </p>
+
+    </div>
+
+    <div>
+
+      <h4>Business</h4>
+
+      <ul>
+        <li><a href="#funding">Funding Resources</a></li>
+        <li><a href="#certification">Women-Owned Certification</a></li>
+        <li><a href="#startup">Startup Checklist</a></li>
+        <li><a href="#tools">Business Calculators</a></li>
+        <li><a href="#ai">AI & Technology</a></li>
+      </ul>
+
+    </div>
+
+    <div>
+
+      <h4>Official Resources</h4>
+
+      <ul>
+        <li><a href="https://www.sba.gov/" target="_blank" rel="noopener">U.S. SBA</a></li>
+        <li><a href="https://www.grants.gov/" target="_blank" rel="noopener">Grants.gov</a></li>
+        <li><a href="https://sam.gov/" target="_blank" rel="noopener">SAM.gov</a></li>
+        <li><a href="https://www.score.org/" target="_blank" rel="noopener">SCORE</a></li>
+        <li><a href="https://www.uspto.gov/" target="_blank" rel="noopener">USPTO</a></li>
+      </ul>
+
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+
+    <div>
+      © <span id="year"></span> PinkRazor.com • All Rights Reserved
+    </div>
+
+    <div style="color:var(--coral);font-family:monospace;">
+      SHARP TOOLS • REAL OPPORTUNITIES • BOLD WOMEN
+    </div>
+
+  </div>
+
+</footer>
+
+<script>
+"use strict";
+
+/* DATE */
+
+function updateDate(){
+  const now = new Date();
+
+  document.getElementById("currentDate").textContent =
+    new Intl.DateTimeFormat(
+      "en-US",
+      {
+        weekday:"long",
+        month:"long",
+        day:"numeric",
+        year:"numeric"
       }
-    };
-  </script>
+    ).format(now);
+
+  document.getElementById("year").textContent =
+    now.getFullYear();
+}
+
+updateDate();
+
+
+/* STARTUP CHECKLIST */
+
+const startupChecks =
+  document.querySelectorAll(".startup-check");
+
+function loadChecklist(){
+
+  startupChecks.forEach(function(box){
+
+    const saved =
+      localStorage.getItem(
+        "pinkrazor_" + box.id
+      );
+
+    box.checked = saved === "true";
+
+    box.addEventListener(
+      "change",
+      function(){
+
+        localStorage.setItem(
+          "pinkrazor_" + box.id,
+          box.checked
+        );
+
+        updateProgress();
+      }
+    );
+
+  });
+
+  updateProgress();
+}
+
+function updateProgress(){
+
+  const total =
+    startupChecks.length;
+
+  let completed = 0;
+
+  startupChecks.forEach(function(box){
+
+    if(box.checked){
+      completed++;
+    }
+
+  });
+
+  const percent =
+    total
+      ? Math.round((completed / total) * 100)
+      : 0;
+
+  document.getElementById("progressNumber").textContent =
+    percent + "%";
+
+  document.getElementById("progressFill").style.width =
+    percent + "%";
+}
+
+document
+  .getElementById("resetChecklist")
+  .addEventListener(
+    "click",
+    function(){
+
+      startupChecks.forEach(function(box){
+
+        box.checked = false;
+
+        localStorage.removeItem(
+          "pinkrazor_" + box.id
+        );
+
+      });
+
+      updateProgress();
+    }
+  );
+
+loadChecklist();
+
+
+/* NUMBER FORMAT */
+
+function money(value){
+
+  return new Intl.NumberFormat(
+    "en-US",
+    {
+      style:"currency",
+      currency:"USD",
+      maximumFractionDigits:2
+    }
+  ).format(value);
+}
+
+
+/* BREAK EVEN */
+
+function calculateBreakEven(){
+
+  const fixed =
+    Number(
+      document.getElementById("fixedCosts").value
+    );
+
+  const price =
+    Number(
+      document.getElementById("sellingPrice").value
+    );
+
+  const variable =
+    Number(
+      document.getElementById("variableCost").value
+    );
+
+  const result =
+    document.getElementById("breakEvenResult");
+
+  if(
+    fixed < 0 ||
+    price <= 0 ||
+    variable < 0 ||
+    price <= variable
+  ){
+    result.textContent =
+      "Selling price must be greater than variable cost.";
+    return;
+  }
+
+  const units =
+    Math.ceil(
+      fixed / (price - variable)
+    );
+
+  const sales =
+    units * price;
+
+  result.innerHTML =
+    units.toLocaleString() +
+    " units<br>" +
+    money(sales) +
+    " estimated sales";
+}
+
+
+/* PROFIT MARGIN */
+
+function calculateMargin(){
+
+  const revenue =
+    Number(
+      document.getElementById("revenue").value
+    );
+
+  const costs =
+    Number(
+      document.getElementById("costGoods").value
+    );
+
+  const result =
+    document.getElementById("marginResult");
+
+  if(revenue <= 0 || costs < 0){
+    result.textContent =
+      "Enter valid revenue and cost amounts.";
+    return;
+  }
+
+  const profit =
+    revenue - costs;
+
+  const margin =
+    (profit / revenue) * 100;
+
+  result.innerHTML =
+    money(profit) +
+    " gross profit<br>" +
+    margin.toFixed(1) +
+    "% gross margin";
+}
+
+
+/* LOAN */
+
+function calculateLoan(){
+
+  const principal =
+    Number(
+      document.getElementById("loanAmount").value
+    );
+
+  const annualRate =
+    Number(
+      document.getElementById("interestRate").value
+    );
+
+  const years =
+    Number(
+      document.getElementById("loanYears").value
+    );
+
+  const result =
+    document.getElementById("loanResult");
+
+  if(
+    principal <= 0 ||
+    annualRate < 0 ||
+    years <= 0
+  ){
+    result.textContent =
+      "Enter valid loan information.";
+    return;
+  }
+
+  const months =
+    years * 12;
+
+  let payment;
+
+  if(annualRate === 0){
+
+    payment =
+      principal / months;
+
+  }else{
+
+    const monthlyRate =
+      annualRate / 100 / 12;
+
+    payment =
+      principal *
+      (
+        monthlyRate *
+        Math.pow(
+          1 + monthlyRate,
+          months
+        )
+      ) /
+      (
+        Math.pow(
+          1 + monthlyRate,
+          months
+        ) - 1
+      );
+
+  }
+
+  const total =
+    payment * months;
+
+  result.innerHTML =
+    money(payment) +
+    " / month<br>" +
+    money(total) +
+    " estimated total payments";
+}
+
+
+/* STARTUP COST */
+
+function calculateStartup(){
+
+  const inputs =
+    document.querySelectorAll(
+      ".startup-cost"
+    );
+
+  let total = 0;
+
+  inputs.forEach(function(input){
+
+    total +=
+      Number(input.value) || 0;
+
+  });
+
+  document.getElementById(
+    "startupResult"
+  ).textContent =
+    "Estimated startup cost: " +
+    money(total);
+}
+
+
+/* PRICING */
+
+function calculatePrice(){
+
+  const cost =
+    Number(
+      document.getElementById("productCost").value
+    );
+
+  const margin =
+    Number(
+      document.getElementById("desiredMargin").value
+    );
+
+  const result =
+    document.getElementById("priceResult");
+
+  if(
+    cost < 0 ||
+    margin < 0 ||
+    margin >= 100
+  ){
+    result.textContent =
+      "Enter a valid cost and margin below 100%.";
+    return;
+  }
+
+  const price =
+    cost / (1 - margin / 100);
+
+  const profit =
+    price - cost;
+
+  result.innerHTML =
+    "Suggested price: " +
+    money(price) +
+    "<br>Gross profit per sale: " +
+    money(profit);
+}
+
+
+/* REVENUE GOAL */
+
+function calculateSalesGoal(){
+
+  const goal =
+    Number(
+      document.getElementById("revenueGoal").value
+    );
+
+  const average =
+    Number(
+      document.getElementById("averageSale").value
+    );
+
+  const result =
+    document.getElementById(
+      "salesGoalResult"
+    );
+
+  if(goal <= 0 || average <= 0){
+    result.textContent =
+      "Enter a valid revenue goal and average sale.";
+    return;
+  }
+
+  const sales =
+    Math.ceil(goal / average);
+
+  result.innerHTML =
+    sales.toLocaleString() +
+    " sales needed<br>at an average of " +
+    money(average) +
+    " each";
+}
+</script>
+
 </body>
 </html>
